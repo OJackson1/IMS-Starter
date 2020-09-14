@@ -57,7 +57,7 @@ public class Utils {
 	               
 	           }
 	           
-	           public float getFloat() { 
-		           return float.scanner.nextLine(); 
+	           public String getFloat() { 
+		           return scanner.nextLine(); 
 	           }
 }

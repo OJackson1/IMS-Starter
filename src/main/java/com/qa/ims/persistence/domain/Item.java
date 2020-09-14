@@ -52,7 +52,7 @@ public class Item {
 		int result = 1;
 		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
 		result = prime * result + ((Itemid == null) ? 0 : Itemid.hashCode());
-		// result = prime * result + ((value == null) ? 0 : value.hashCode());
+		//result = prime * result + ((value == null) ? 0 : value.hashCode());
 		return result;
 	}
 

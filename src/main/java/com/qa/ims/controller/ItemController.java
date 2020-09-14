@@ -29,7 +29,7 @@ public class ItemController implements CrudController<Item> {
 	@Override
 	public List<Item> readAll() {
 		List<Item> items = itemDAO.readAll();
-		for (Items items : items) {
+		for (Item item : items) {
 			LOGGER.info(items.toString());
 		}
 		return items;
@@ -39,7 +39,7 @@ public class ItemController implements CrudController<Item> {
 	 * Creates a Item by taking in user input
 	 */
 	@Override
-	public Items create() {
+	public Item create() {
 		LOGGER.info("Name of Item");
 		String itemName = utils.getString();
 		LOGGER.info("Please enter value of Item");
@@ -53,13 +53,13 @@ public class ItemController implements CrudController<Item> {
 	 * Updates an existing Item by taking in user input
 	 */
 	@Override
-	public Items update() {
+	public Item update() {
 		LOGGER.info("Please enter the id of the Item you would like to update");
 		Long Itemid = utils.getLong();
 		LOGGER.info("Please enter New Item Name");
 		String itemName = utils.getString();
 		LOGGER.info("Please enter New value of Item");
-		float value = utils.getString();
+		float value = utils.getFloat();
 		Item item = itemDAO.update(new Item(Itemid, itemName, value));
 		LOGGER.info("Item Updated");
 		return item;
