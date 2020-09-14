@@ -22,7 +22,8 @@ public class Utils {
 	public Long getLong() { 
 	       String input = null; 
 	       Long longInput = null; 
-	       do { try { input = getString(); 
+	       do { 
+	    	   try { input = getString(); 
 	       longInput = Long.parseLong(input); 
 	           
 	       } catch (NumberFormatException nfe) { 
@@ -55,5 +56,8 @@ public class Utils {
 	               return doubleInput; 
 	               
 	           }
-
+	           
+	           public float getFloat() { 
+		           return float.scanner.nextLine(); 
+	           }
 }

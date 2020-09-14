@@ -5,9 +5,9 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.qa.ims.persistence.dao.CustomerDAO;
 import com.qa.ims.persistence.dao.ItemDAO;
-import com.qa.ims.persistence.domain.Customer;
+import com.qa.ims.persistence.dao.ItemDAO;
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.utils.Utils;
 
 public class ItemController implements CrudController<Item> {
@@ -28,7 +28,7 @@ public class ItemController implements CrudController<Item> {
 	 */
 	@Override
 	public List<Item> readAll() {
-		List<Item> items = itemsDAO.readAll();
+		List<Item> items = itemDAO.readAll();
 		for (Items items : items) {
 			LOGGER.info(items.toString());
 		}
@@ -43,7 +43,7 @@ public class ItemController implements CrudController<Item> {
 		LOGGER.info("Name of Item");
 		String itemName = utils.getString();
 		LOGGER.info("Please enter value of Item");
-		float value = utils.getString();
+		float value = utils.getFloat();
 		Item item = itemDAO.create(new Item(itemName, value));
 		LOGGER.info("Item created");
 		return item;
@@ -55,12 +55,12 @@ public class ItemController implements CrudController<Item> {
 	@Override
 	public Items update() {
 		LOGGER.info("Please enter the id of the Item you would like to update");
-		Long id = utils.getLong();
-		LOGGER.info("Please enter Item Name");
+		Long Itemid = utils.getLong();
+		LOGGER.info("Please enter New Item Name");
 		String itemName = utils.getString();
-		LOGGER.info("Please enter value of Item");
+		LOGGER.info("Please enter New value of Item");
 		float value = utils.getString();
-		Item item = itemsDAO.update(new Item(id, itemName, value));
+		Item item = itemDAO.update(new Item(Itemid, itemName, value));
 		LOGGER.info("Item Updated");
 		return item;
 	}
@@ -73,7 +73,7 @@ public class ItemController implements CrudController<Item> {
 	@Override
 	public int delete() {
 		LOGGER.info("Please enter the id of the Item you would like to delete");
-		Long id = utils.getLong();
-		return itemsDAO.delete(id);
+		Long Itemid = utils.getLong();
+		return itemDAO.delete(Itemid);
 	}
 }

@@ -10,19 +10,20 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.utils.DBUtils;
 
-public class ItemDAO {
+public class ItemDAO implements Dao<Item>{
 	
 	public static final Logger LOGGER = LogManager.getLogger();
 
 	@Override
 	public Item modelFromResultSet(ResultSet resultSet) throws SQLException {
-		Long id = resultSet.getLong("id");
+		Long Itemid = resultSet.getLong("id");
 		String itemName = resultSet.getString("item_name");
-		float value = resultSet.getString("value");
-		return new Item(id, itemName, value);
+		float value = resultSet.getFloat("value");
+		return new Item(Itemid, itemName, value);
 	}
 
 	/**
@@ -31,11 +32,11 @@ public class ItemDAO {
 	 * @return A list of items
 	 */
 	@Override
-	public List<Items> readAll() {
+	public List<Item> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("select * from items");) {
-			List<Items> items = new ArrayList<>();
+			List<Item> items = new ArrayList<>();
 			while (resultSet.next()) {
 				items.add(modelFromResultSet(resultSet));
 			}
@@ -47,7 +48,7 @@ public class ItemDAO {
 		return new ArrayList<>();
 	}
 
-	public Items readLatest() {
+	public Item readLatest() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM items ORDER BY id DESC LIMIT 1");) {
@@ -93,19 +94,19 @@ public class ItemDAO {
 	}
 
 	/**
-	 * Updates a customer in the database
+	 * Updates a item in the database
 	 * 
-	 * @param customer - takes in a customer object, the id field will be used to
-	 *                 update that customer in the database
+	 * @param item - takes in a item object, the id field will be used to
+	 *                 update that item in the database
 	 * @return
 	 */
 	@Override
-	public Customer update(Customer customer) {
+	public Item update(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update customers set first_name ='" + customer.getFirstName() + "', surname ='"
-					+ customer.getSurname() + "' where id =" + customer.getId());
-			return readCustomer(customer.getId());
+			statement.executeUpdate("update Item set item_name ='" + item.getItemName() + "', value ='"
+					+ item.getValue() + "' where id =" + item.getItemId());
+			return readItem(item.getItemId());
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -114,15 +115,15 @@ public class ItemDAO {
 	}
 
 	/**
-	 * Deletes a customer in the database
+	 * Deletes a item in the database
 	 * 
-	 * @param id - id of the customer
+	 * @param id - id of the item
 	 */
 	@Override
-	public int delete(long id) {
+	public int delete(long Itemid) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			return statement.executeUpdate("delete from customers where id = " + id);
+			return statement.executeUpdate("delete from items where id = " + Itemid);
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());

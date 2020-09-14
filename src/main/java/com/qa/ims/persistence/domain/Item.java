@@ -2,7 +2,7 @@ package com.qa.ims.persistence.domain;
 
 public class Item {
 	
-	private Long id;
+	private Long Itemid;
 	private String itemName;
 	private float value;
 
@@ -11,18 +11,18 @@ public class Item {
 		this.setValue(value);
 	}
 
-	public Item(Long id, String itemName, float value) {
-		this.setId(id);
+	public Item(Long Itemid, String itemName, float value) {
+		this.setItemId(Itemid);
 		this.setItemName(itemName);
 		this.setValue(value);
 	}
 	
-	public Long getId() {
-		return id;
+	public Long getItemId() {
+		return Itemid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setItemId(Long Itemid) {
+		this.Itemid = Itemid;
 	}
 
 	public String getItemName() {
@@ -33,7 +33,7 @@ public class Item {
 		this.itemName = itemName;
 	}
 
-	public double getvalue() {
+	public float getValue() {
 		return value;
 	}
 
@@ -43,7 +43,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "id:" + id + " Item name:" + itemName + " Value:" + value;
+		return "id:" + Itemid + " Item name:" + itemName + " Value:" + value;
 	}
 
 	@Override
@@ -51,8 +51,8 @@ public class Item {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((value == null) ? 0 : value.hashCode());
+		result = prime * result + ((Itemid == null) ? 0 : Itemid.hashCode());
+		// result = prime * result + ((value == null) ? 0 : value.hashCode());
 		return result;
 	}
 
@@ -70,10 +70,10 @@ public class Item {
 				return false;
 		} else if (!getItemName().equals(other.getItemName()))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (Itemid == null) {
+			if (other.Itemid != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!Itemid.equals(other.Itemid))
 			return false;
 		if (value == null) {
 			if (other.value != null)
