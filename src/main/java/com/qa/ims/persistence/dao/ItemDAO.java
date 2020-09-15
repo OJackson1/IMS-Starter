@@ -70,8 +70,8 @@ public class ItemDAO implements Dao<Item>{
 	public Item create(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("INSERT INTO customers(item_name, value) values('" + item.getItemName()
-					+ "','" + item.getValue() + "')");
+			statement.executeUpdate("INSERT INTO items(item_name, value) values('" + item.getItemName()
+					+ "','" + item.getValueStr() + "')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e);
@@ -80,10 +80,10 @@ public class ItemDAO implements Dao<Item>{
 		return null;
 	}
 
-	public Item readItem(Long id) {
+	public Item readItem(Long Itemid) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where id = " + id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where id = " + Itemid);) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
