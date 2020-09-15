@@ -83,7 +83,7 @@ public class ItemDAO implements Dao<Item>{
 	public Item readItem(Long Itemid) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where id = " + Itemid);) 
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where itemid = " + Itemid);) 
 		{
 			resultSet.next();
 			return modelFromResultSet(resultSet);
@@ -106,7 +106,7 @@ public class ItemDAO implements Dao<Item>{
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("update Items set item_name ='" + item.getItemName() + "'," + "value ="
-					+ item.getValue() + " where id =" + item.getItemId());
+					+ item.getValue() + " where itemid =" + item.getItemId());
 			return readItem(item.getItemId());
 		} catch (Exception e) {
 			LOGGER.debug(e);
@@ -124,7 +124,7 @@ public class ItemDAO implements Dao<Item>{
 	public int delete(long Itemid) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			return statement.executeUpdate("delete from items where id = " + Itemid);
+			return statement.executeUpdate("delete from items where itemid = " + Itemid);
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());

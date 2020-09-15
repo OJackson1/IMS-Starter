@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `ims`.`customers` (
     PRIMARY KEY (`id`)
 );
 CREATE TABLE IF NOT EXISTS `ims`.`items` (
-    `item_id` INT(11) NOT NULL AUTO_INCREMENT,
+    `itemid` INT(11) NOT NULL AUTO_INCREMENT,
     `item_name` VARCHAR(40) NULL DEFAULT NULL,
     `value` DECIMAL(3) NULL DEFAULT NULL,
     PRIMARY KEY (`id`)

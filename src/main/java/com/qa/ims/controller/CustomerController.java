@@ -1,4 +1,4 @@
-package com.qa.ims.controller;
+ package com.qa.ims.controller;
 
 import java.util.List;
 

@@ -77,7 +77,7 @@ public class Orders {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Order other = (Order) obj;
+		Orders other = (Orders) obj;
 		if (customerid == null) {
 			if (other.customerid != null)
 				return false;
@@ -89,7 +89,7 @@ public class Orders {
 		} else if (!itemid.equals(other.itemid))
 			return false;
 		if (orderid == null) {
-			if (other.oid != null)
+			if (other.orderid != null)
 				return false;
 		} else if (!orderid.equals(other.orderid))
 			return false;
