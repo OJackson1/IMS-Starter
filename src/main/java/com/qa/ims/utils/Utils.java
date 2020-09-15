@@ -35,6 +35,8 @@ public class Utils {
 	       return longInput; 
 	       
 	   } 
+	
+	
 	       public String getString() { 
 	           return scanner.nextLine(); 
 	           
@@ -57,7 +59,17 @@ public class Utils {
 	               
 	           }
 	           
-	           public String getFloat() { 
-		           return scanner.nextLine(); 
-	           }
+	           public Float getFloat() {
+	       		String input = getString();
+	       		Float floatInput = null;
+	       		do {
+	       			try {
+	       				floatInput = Float.parseFloat(input);
+	       			} catch (NumberFormatException nfe) {
+	       				LOGGER.info("Error - Please enter a number");
+	       			}
+	       		} while (floatInput == null);
+	       		return floatInput;
+	       	}
+	           
 }

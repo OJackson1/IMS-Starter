@@ -4,14 +4,14 @@ public class Item {
 	
 	private Long Itemid;
 	private String itemName;
-	private float value;
+	private Double value;
 
-	public Item(String itemName, float value) {
+	public Item(String itemName, Double value) {
 		this.setItemName(itemName);
 		this.setValue(value);
 	}
 
-	public Item(Long Itemid, String itemName, float value) {
+	public Item(Long Itemid, String itemName, Double value) {
 		this.setItemId(Itemid);
 		this.setItemName(itemName);
 		this.setValue(value);
@@ -33,11 +33,16 @@ public class Item {
 		this.itemName = itemName;
 	}
 
-	public float getValue() {
+	public Double getValue() {
 		return value;
 	}
-
-	public void setValue(float value) {
+	
+	public String getValueStr() {
+		String valueStr = Double.toString(value);
+		return valueStr;
+	}
+	
+	public void setValue(Double value) {
 		this.value = value;
 	}
 
@@ -52,7 +57,7 @@ public class Item {
 		int result = 1;
 		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
 		result = prime * result + ((Itemid == null) ? 0 : Itemid.hashCode());
-		//result = prime * result + ((value == null) ? 0 : value.hashCode());
+		result = prime * result + ((value == null) ? 0 : value.hashCode());
 		return result;
 	}
 
