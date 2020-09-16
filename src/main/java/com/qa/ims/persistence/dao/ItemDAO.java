@@ -22,7 +22,7 @@ public class ItemDAO implements Dao<Item>{
 	public Item modelFromResultSet(ResultSet resultSet) throws SQLException {
 		Long Itemid = resultSet.getLong("itemid");
 		String itemName = resultSet.getString("itemName");
-		Double value = resultSet.getDouble("value");
+		Float value = resultSet.getFloat("value");
 		return new Item(Itemid, itemName, value);
 	}
 
@@ -71,7 +71,7 @@ public class ItemDAO implements Dao<Item>{
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("INSERT INTO items(itemName, value) values('" + item.getItemName()
-					+ "','" + item.getValueStr() + "')");
+					+ "','" + item.getValue() + "')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e);

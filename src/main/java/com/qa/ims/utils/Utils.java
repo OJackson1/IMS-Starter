@@ -36,6 +36,19 @@ public class Utils {
 	       
 	   } 
 	
+	public Float getFloat() {
+		String input = getString();
+		Float floatInput = null;
+		do {
+			try {
+				floatInput = Float.parseFloat(input);
+			} catch (NumberFormatException nfe) {
+				LOGGER.info("Error - Please enter a float number");
+			}
+		} while (floatInput == null);
+		return floatInput;
+	}
+	
 	
 	       public String getString() { 
 	           return scanner.nextLine(); 

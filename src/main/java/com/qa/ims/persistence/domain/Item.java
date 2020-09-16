@@ -4,14 +4,14 @@ public class Item {
 	
 	private Long itemid;
 	private String itemName;
-	private Double value;
+	private Float value;
 
-	public Item(String itemName, Double value) {
+	public Item(String itemName, Float value) {
 		this.setItemName(itemName);
 		this.setValue(value);
 	}
 
-	public Item(Long itemid, String itemName, Double value) {
+	public Item(Long itemid, String itemName, Float value) {
 		this.setItemId(itemid);
 		this.setItemName(itemName);
 		this.setValue(value);
@@ -33,16 +33,11 @@ public class Item {
 		this.itemName = itemName;
 	}
 
-	public Double getValue() {
+	public Float getValue() {
 		return value;
 	}
 	
-	public String getValueStr() {
-		String valueStr = Double.toString(value);
-		return valueStr;
-	}
-	
-	public void setValue(Double value) {
+	public void setValue(Float value) {
 		this.value = value;
 	}
 
