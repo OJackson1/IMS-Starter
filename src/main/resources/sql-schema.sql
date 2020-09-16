@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `ims`.`items` (
 CREATE TABLE IF NOT EXISTS `ims`.`orders` (
     `orderid` INT(11) NOT NULL AUTO_INCREMENT,
     `customerid` INT(11) NOT NULL,
-    `itemid` INT(11) NOT NULL,
+    `itemid` INT(11) NOT NULL, `quantity` INT(11) NOT NULL,
     PRIMARY KEY (`orderid`),
     foreign key (`customerid`) references customers (`customerid`),
     foreign key (`itemid`) references items (`itemid`)

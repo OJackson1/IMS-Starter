@@ -55,7 +55,6 @@ public class OrdersController implements CrudController<Orders>  {
      */
     @Override
     public Orders update() {
-        //TODO: require to update this section
         LOGGER.info("Please enter the id of the order you would like to update");
         Long orderid = utils.getLong();
         LOGGER.info("Please enter a product ID");

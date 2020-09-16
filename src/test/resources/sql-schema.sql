@@ -5,13 +5,13 @@ CREATE TABLE IF NOT EXISTS `ims`.`customers` (
     `customerid` INT(11) NOT NULL AUTO_INCREMENT,
     `firstName` VARCHAR(40) NULL DEFAULT NULL,
     `surname` VARCHAR(40) NULL DEFAULT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`customerid`)
 );
 CREATE TABLE IF NOT EXISTS `ims`.`items` (
-    `item_id` INT(11) NOT NULL AUTO_INCREMENT,
+    `itemid` INT(11) NOT NULL AUTO_INCREMENT,
     `item_name` VARCHAR(40) NULL DEFAULT NULL,
     `value` DECIMAL(3) NULL DEFAULT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`itemid`)
 );
 CREATE TABLE IF NOT EXISTS `ims`.`orders` (
     `orderid` INT(11) NOT NULL AUTO_INCREMENT,
