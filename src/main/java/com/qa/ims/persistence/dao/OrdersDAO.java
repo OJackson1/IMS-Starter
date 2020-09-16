@@ -15,11 +15,16 @@ import com.qa.ims.persistence.domain.Orders;
 import com.qa.ims.utils.DBUtils;
 import com.qa.ims.utils.Utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import com.qa.ims.persistence.domain.Item;
+
 
 
 public class OrdersDAO implements Dao<Orders>{
 	
 	public static final Logger LOGGER = LogManager.getLogger();
+	private Utils utils = new Utils();
 
 	@Override
 	public Orders modelFromResultSet(ResultSet resultSet) throws SQLException {
@@ -88,18 +93,15 @@ public class OrdersDAO implements Dao<Orders>{
 	public Orders create(Orders order) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 	             Statement statement = connection.createStatement();) {
-	            statement.executeUpdate("INSERT INTO orders(customerId) values('"+order.getCustomerid() + "')");
+	            statement.executeUpdate("INSERT INTO orders(customerid) values('"+order.getCustomerid() + "')");
 	            Orders cust =readLatest();
-
 	            LOGGER.info(cust.getOrderid());
-	            LOGGER.info("Please enter a itemid");
-	            Long itemid = Utils.getLong();
+	            LOGGER.info("Please enter a item ID");
+	            Long itemid = utils.getLong();
 	            LOGGER.info("Please enter a quantity");
-	            Long quantity = Utils.getLong();
-
+	            Long quantity = utils.getLong();
 	            statement.executeUpdate("INSERT INTO orderItems(orderid, itemid, quantity) values('" + cust.getOrderid()
 	                    + "','" + itemid + "','" +quantity+"')");            
-
 	            return cust;
 	        } catch (Exception e) {
 	            LOGGER.debug(e);
@@ -198,10 +200,10 @@ public class OrdersDAO implements Dao<Orders>{
 	 * @param id - id of the order
 	 */
 	@Override
-	public int delete(long orderid) {
+	public int delete(long idd) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			return statement.executeUpdate("delete from orders where orderid in (select orderid from orderItems where orderid = "+ orderid+")");
+			return statement.executeUpdate("delete from orders where orderid in (select orderid from orderItems where orderid = "+ idd+")");
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
