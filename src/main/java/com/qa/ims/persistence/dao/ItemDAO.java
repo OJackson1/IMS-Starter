@@ -83,8 +83,7 @@ public class ItemDAO implements Dao<Item>{
 	public Item readItem(Long itemid) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where itemid = " + itemid);) 
-		{
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where itemid = " + itemid);) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
