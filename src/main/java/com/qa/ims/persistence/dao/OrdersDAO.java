@@ -84,7 +84,7 @@ public class OrdersDAO implements Dao<Orders>{
 		return null;
 	}
 
-	public Orders readItem(Long orderid) {
+	public Orders readOrder(Long orderid) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders where orderid = " + orderid);) {
@@ -109,7 +109,7 @@ public class OrdersDAO implements Dao<Orders>{
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("update orders set itemid ='" + order.getItemid() + "', customerid = '" + order.getCustomerid() + "', quantity = '" + order.getQuantity() + "' where orderid = '" + order.getOrderid() + "'");
-			return readItem(order.getOrderid());
+			return readOrder(order.getOrderid());
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -123,7 +123,7 @@ public class OrdersDAO implements Dao<Orders>{
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("DELETE FROM orders WHERE orderid =" + order.getOrderid() + " AND itemid=" + order.getItemid());
-			return readItem(order.getOrderid());
+			return readOrder(order.getOrderid());
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -136,7 +136,7 @@ public class OrdersDAO implements Dao<Orders>{
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("insert into orders (orderid, itemid, quantity) values (" + order.getOrderid() + ", " + order.getItemid() + ", " + order.getQuantity() + ")");
-			return readItem(order.getOrderid());
+			return readOrder(order.getOrderid());
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());

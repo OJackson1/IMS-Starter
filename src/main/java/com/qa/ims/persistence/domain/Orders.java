@@ -6,7 +6,9 @@ public class Orders {
 	private Long customerid;
 	private Long itemid;
 	private Long quantity;
-
+	private Float total;
+	private String customer;
+	private String itemName;
 	
 	public Orders(Long customerid, Long itemid, Long quantity) {
 		this.setCustomerid(customerid);
@@ -19,8 +21,9 @@ public class Orders {
 		this.setCustomerid(customerid);
 		this.setItemid(itemid);
 		this.setQuantity(quantity);
-	}
 		
+	}
+	
 	public Long getOrderid() {
 		return orderid;
 	}
