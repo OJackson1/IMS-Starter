@@ -24,7 +24,7 @@ public class Utils {
 	       Long longInput = null; 
 	       do { 
 	    	   try { input = getString(); 
-	       longInput = Long.parseLong(input); 
+	    	   		 longInput = Long.parseLong(input); 
 	           
 	       } catch (NumberFormatException nfe) { 
 	           LOGGER.info("Error - Please enter a number"); 

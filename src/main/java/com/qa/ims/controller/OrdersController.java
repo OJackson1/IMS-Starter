@@ -39,13 +39,9 @@ public class OrdersController implements CrudController<Orders>  {
      */
     @Override
     public Orders create() {
-        LOGGER.info("Please enter a product ID");
-        Long itemid = utils.getLong();
         LOGGER.info("Please enter a customer ID");
         Long customerid = utils.getLong();
-        LOGGER.info("Please enter a Quantity");
-        Long quantity = utils.getLong();
-        Orders order = orderDAO.create(new Orders(customerid, itemid, quantity));
+        Orders order = orderDAO.create(new Orders(customerid));
         LOGGER.info("Order created");
         return order;
     }
@@ -55,17 +51,14 @@ public class OrdersController implements CrudController<Orders>  {
      */
     @Override
     public Orders update() {
-        LOGGER.info("Please enter the id of the order you would like to update");
+    	LOGGER.info("Please enter the orderid of the order you would like to update/add");
         Long orderid = utils.getLong();
-        LOGGER.info("Please enter a product ID");
+        LOGGER.info("Please enter a itemid");
         Long itemid = utils.getLong();
-        LOGGER.info("Please enter a customer ID");
-        Long customerid = utils.getLong();
-        LOGGER.info("Please enter a Quantity");
+        LOGGER.info("Please enter a quantity");
         Long quantity = utils.getLong();
-        Orders order = orderDAO.update(new Orders(orderid, customerid, itemid, quantity));
-        LOGGER.info("Order Updated");
-        return order;
+
+        return OrdersDAO.update(new Orders(orderid,itemid,quantity));
     }
 
     /**
@@ -75,9 +68,24 @@ public class OrdersController implements CrudController<Orders>  {
      */
     @Override
     public int delete() {
-        LOGGER.info("Please enter the ID of the order you would like to delete");
-        Long orderid = utils.getLong();
-        return orderDAO.delete(orderid);
-    }
+    	LOGGER.info("Type \"item\" to delete item or \"order\" to delete order");
+        String choice =utils.getString();
 
+        switch(choice){
+            case "order":
+                LOGGER.info("Type orderid of the order you would like to delete");
+                Long id = utils.getLong();
+                return OrdersDAO.delete(id);
+            case "item":
+                LOGGER.info("Type the orderid of the order you would like to delete");
+                Long orderid = utils.getLong();
+                LOGGER.info("Type itemid of the item you would like to delete");
+                Long itemid = utils.getLong();
+                return OrdersDAO.delete(orderid,itemid);
+            default:
+                LOGGER.info("Try again");
+                break;
+        }
+        return  0;
+    }
 }

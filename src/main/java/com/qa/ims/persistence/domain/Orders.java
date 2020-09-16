@@ -8,13 +8,23 @@ public class Orders {
 	private Long quantity;
 	private Float total;
 	private String customer;
+	private Float value;
 	private String itemName;
 	
-	public Orders(Long customerid, Long itemid, Long quantity) {
-		this.setCustomerid(customerid);
-		this.setItemid(itemid);
-		this.setQuantity(quantity);
+	public Orders(Long customerid) {
+        this.setCustomerid(customerid);
+        
 	}
+	
+	public Orders(Long orderid,Long customerid) {
+        this.setOrderid(orderid);
+        this.setCustomerid(customerid);
+    }
+    public Orders(Long orderid, Long itemid, Long quantity) {
+        this.setOrderid(orderid);
+        this.setItemid(itemid);
+        this.quantity = quantity;
+    }
 	
 	public Orders(Long orderid, Long customerid, Long itemid, Long quantity) {
 		this.setOrderid(orderid);
@@ -23,6 +33,16 @@ public class Orders {
 		this.setQuantity(quantity);
 		
 	}
+	
+	public Orders (Long orderid, Long itemid, String customer, String itemName, Long quantity, Float value, Float total){
+        this.setOrderid(orderid);
+        this.setItemid(itemid);
+        this.customer = customer;
+        this.itemName = itemName;
+        this.quantity = quantity;
+        this.value = value;
+        this.total = total;
+    }
 	
 	public Long getOrderid() {
 		return orderid;
@@ -58,7 +78,7 @@ public class Orders {
 	
 	@Override
 	public String toString() {
-		return "Order [orderid=" + orderid + ", customerid=" + customerid + ", itemid=" + itemid + ", quantity=" + quantity + "]";
+		return "Order [orderid=" + orderid + ", itemid=" + itemid +", customer=" + customer + ", itemName=" + itemName + ", quantity=" + quantity + ", value=" + value +", total=" + total +"]";
 	}
 
 	@Override
