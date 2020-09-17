@@ -72,7 +72,7 @@ public class OrdersController implements CrudController<Orders>  {
      */
     @Override
     public Orders update() {
-    	LOGGER.info("Please enter the order ID of the order you would like to update or add");
+    	LOGGER.info("Please enter the order ID of the order you would like to add to");
         Long idd = utils.getLong();
         LOGGER.info("Please enter a item ID");
         Long itemid = utils.getLong();

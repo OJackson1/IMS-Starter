@@ -54,7 +54,7 @@ public class OrdersDAO implements Dao<Orders>{
 	             Statement statement = connection.createStatement();
 	             ResultSet resultSet = statement.executeQuery("select orders.orderid, orderItems.itemid, concat(customers.firstName,\" \", customers.surname) as customer, items.itemName, items.value, quantity,quantity*value as total from orders, orderItems, items, customers where orders.orderid = " +
 	                     "orderItems.orderid and items.itemid = orderItems.itemid and orders.customerid= customers.customerid order by orders.orderid;");
-
+				//ResultSet resultSet = statement.executeQuery("select orderid, customerid, itemid, total from orders, orderitems where orders.orderid = orderitems.orderid;");
 	        )
 	       {
 	            List<Orders> orders = new ArrayList<>();
@@ -239,7 +239,7 @@ public class OrdersDAO implements Dao<Orders>{
 	public int readcustomer(Long orderid) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();) {
-            return statement.executeUpdate("select sum(quantity*value) as total from orders, orderItems, items where order.orderid = orderItems.orderid and orderItems.itemid and orders.orderid = orderid =" +orderid +")");
+            return statement.executeUpdate("select sum(quantity*value) as total from orders, orderItems, items where orders.orderid = orderItems.orderid and orderItems.itemid and orders.orderid =" +orderid +")");
         } catch (Exception e) {
             LOGGER.debug(e);
             LOGGER.error(e.getMessage());
