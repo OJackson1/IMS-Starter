@@ -23,7 +23,7 @@ public class CustomerDAOTest {
 
 	@Test
 	public void testCreate() {
-		final Customer created = new Customer(1L, "Leeand", "Perrins");
+		final Customer created = new Customer(6L, "Leeand", "Perrins");
 		assertEquals(created, DAO.create(created));
 	}
 
@@ -40,7 +40,7 @@ public class CustomerDAOTest {
 
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Customer(1L, "Harriet", "Harriman"), DAO.readLatest());
+		assertEquals(new Customer(5L, "Harriet", "Harriman"), DAO.readLatest());
 	}
 
 	@Test

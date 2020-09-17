@@ -1,7 +1,7 @@
 Coverage: 34%
 # Project Title
 
-One Paragraph of project description goes here
+Inventory-Management-System is a Java program using MySQL.
 
 ## Getting Started
 
@@ -9,60 +9,44 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Java 7 or later
 
-```
-Give examples
-```
+IDE - Eclipse
+Build tool - Maven
+Database managaement System - MySQL
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+1) Clone this repository and open it in your IDE.
 
-Say what the step will be
+2) Either change the 'connect()' method to your own database connection inside the src/main/java/com/qa/ims/utils/DBUtils.java file OR change the database properties method and modify src/main/java/com/qa/ims/IMS.java to pass the file location of 'properties.db' to connect().
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+3)Run the 'Runner.java' class under src/main/java/com/qa/ims to start the application.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system. Break down into which tests and what they do
+The tests are located under src/test.
 
 ### Unit Tests 
 
-Explain what these tests test, why and how to run them
+The Junit tests cover some basic testing such as checking classes like Orders or Item have correct equals() and 
+hashCode() methods.
+  
+The tests for the Data-Access Objects (DAOs) are a bit more complex, passing in objects, ensuring they are 
+processed correctly and that the correct information is passed back. Example:
 
-```
-Give an example
-```
+@Test
+	public void testCreate() {
+		final Customer created = new Customer(6L, "Leeand", "Perrins");
+		assertEquals(created, DAO.create(created));  
+  
+Using an IDE you can run these tests by right-clicking the classes and selecting the "Run as JUnit test" 
+option or right-click on the IMS folder and click "Run as JUnit test" to run whole application test.
 
-### Integration Tests 
-Explain what these tests test, why and how to run them
+To run these tests in your IDE by right-clicking the classes and selecting "Run as JUnit test".  
+  
+If you are using eclipse, you can also right-click the project folder and select 'Coverage As...'.
 
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
@@ -75,6 +59,10 @@ We use [SemVer](http://semver.org/) for versioning.
 ## Authors
 
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Jordan Harrison** - *IMS Starter* - 
+[JHarry444](https://github.com/JHarry444/IMS-Starter)
+* **Nick Johnson** - *Updated IMS Starter* 
+[nickrstewarttds](https://github.com/nickrstewarttds/IMS-Starter)
 
 ## License
 

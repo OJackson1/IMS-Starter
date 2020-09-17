@@ -206,7 +206,6 @@ public class OrdersDAO implements Dao<Orders>{
         return null;
 	}
 	
-	
 	/**
 	 * Deletes an order in the database
 	 * 

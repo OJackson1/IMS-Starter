@@ -1,3 +1,9 @@
+INSERT INTO `ims`.`customers` (`firstName`, `surname`) VALUES ('Jordan', 'Harrison');
+INSERT INTO `ims`.`customers` (`firstName`, `surname`) VALUES ('Owen', 'Jackson');
+INSERT INTO `ims`.`customers` (`firstName`, `surname`) VALUES ('Theo', 'Thuckthunder');
+INSERT INTO `ims`.`customers` (`firstName`, `surname`) VALUES ('Dick', 'Dickerson');
+INSERT INTO `ims`.`customers` (`firstName`, `surname`) VALUES ('Harriet', 'Harriman');
+
 INSERT INTO `ims`.`items` (`itemName`, `value`) VALUES ('Football', 2.00);
 INSERT INTO `ims`.`items` (`itemName`, `value`) VALUES ('Yoyo', 3.00);
 INSERT INTO `ims`.`items` (`itemName`, `value`) VALUES ('Hat', 4.00);
