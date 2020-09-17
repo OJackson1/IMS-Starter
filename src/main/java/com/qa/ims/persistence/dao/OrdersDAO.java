@@ -15,10 +15,6 @@ import com.qa.ims.persistence.domain.Orders;
 import com.qa.ims.utils.DBUtils;
 import com.qa.ims.utils.Utils;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import com.qa.ims.persistence.domain.Item;
-
 
 
 public class OrdersDAO implements Dao<Orders>{
@@ -188,7 +184,7 @@ public class OrdersDAO implements Dao<Orders>{
         return 0;
 	}
 	
-	public int readcustomer(Long orderid) {
+	/*public int readcustomer(Long orderid) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();) {
             return statement.executeUpdate("select sum(quantity*value) as total from orders, orderItems, items where orders.orderid = orderItems.orderid and orderItems.itemid and orders.orderid =" +orderid +")");
@@ -197,7 +193,7 @@ public class OrdersDAO implements Dao<Orders>{
             LOGGER.error(e.getMessage());
         }
         return 0;
-	}
+	}*/
 	
 	
 }

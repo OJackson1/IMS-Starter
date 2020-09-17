@@ -1,4 +1,4 @@
-package com.qa.ims.controller;
+ package com.qa.ims.controller;
 
 import java.util.List;
 
@@ -29,29 +29,10 @@ public class OrdersController implements CrudController<Orders>  {
      */
     @Override
     public List<Orders> readAll() {
-        /*List<Orders> orders = orderDAO.readAll();
-        for (Orders order : orders) {
-            LOGGER.info(order.toString());
-        }
-        return orders;*/
-    	LOGGER.info("Type \"customer\" to see customer order total or \"all\" to see all orders");
-    	String choice =utils.getString();
-    	
-    	switch(choice){
-        case "customer":
-            LOGGER.info("Type the order ID of the total you would like to see");
-			Long orderid = utils.getLong();
-			//return orderDAO.readcustomer(orderid);
-        case "all":
         	List<Orders> orders = orderDAO.readAll();
-            for (Orders order : orders) {
-                LOGGER.info(order.toString());
-            }
-            return orders;
-        default:
-            LOGGER.info("Try again");
-            break; }
-		return null;
+        	orders.parallelStream().forEach(LOGGER::info);
+            
+		return orders;
     	
     }
 
