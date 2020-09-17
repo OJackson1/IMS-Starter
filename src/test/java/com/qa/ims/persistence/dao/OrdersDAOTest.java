@@ -22,11 +22,11 @@ public class OrdersDAOTest {
         DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
     }
 
-   // @Test
-   // public void testCreate() {
-    //   final Orders created = new Orders(2L,1L);
-     //  assertEquals(created, DAO.create(created));
-  //  }
+   /* @Test
+    public void testCreate() {
+      final Orders created = new Orders(2L,5L,5L);
+       assertEquals(created, DAO.create(created));
+    }*/
 
     @Test
     public void testReadAll() {

@@ -26,14 +26,6 @@ public class Orders {
         this.quantity = quantity;
     }
 	
-	//public Orders(Long orderid, Long customerid, Long itemid, Long quantity) {
-		//this.setOrderid(orderid);
-		//this.setCustomerid(customerid);
-	//	this.setItemid(itemid);
-		//this.setQuantity(quantity);
-		
-	//}
-	
 	public Orders (Long orderid, Long itemid, String customer, String itemName, Long quantity, Float value, Float total){
         this.setOrderid(orderid);
         this.setItemid(itemid);
