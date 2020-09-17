@@ -43,7 +43,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "item ID:" + itemid + " item Name:" + itemName + " Value: £" + value;
+		return "item ID: " + itemid + " item Name: " + itemName + " Value: £" + value;
 	}
 
 	@Override

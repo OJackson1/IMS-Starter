@@ -83,6 +83,19 @@ public class OrdersDAO implements Dao<Orders>{
 		}
 		return null;
 	}
+	
+	/*public Orders readCustomer() {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY orderid DESC LIMIT 1");) {
+			resultSet.next();
+			return modelFromResultSet(resultSet);
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}*/
 
 	/**
 	 * Creates an order in the database
@@ -96,7 +109,7 @@ public class OrdersDAO implements Dao<Orders>{
 	            statement.executeUpdate("INSERT INTO orders(customerid) values('"+order.getCustomerid() + "')");
 	            Orders cust =readLatest();
 	            LOGGER.info(cust.getOrderid());
-	            LOGGER.info("Please enter a item ID");
+	            LOGGER.info("^ Here is your order ID - Please now enter an item ID");
 	            Long itemid = utils.getLong();
 	            LOGGER.info("Please enter a quantity");
 	            Long quantity = utils.getLong();
@@ -222,4 +235,37 @@ public class OrdersDAO implements Dao<Orders>{
         }
         return 0;
 	}
+	
+	public int readcustomer(Long orderid) {
+        try (Connection connection = DBUtils.getInstance().getConnection();
+             Statement statement = connection.createStatement();) {
+            return statement.executeUpdate("select sum(quantity*value) as total from orders, orderItems, items where order.orderid = orderItems.orderid and orderItems.itemid and orders.orderid = orderid =" +orderid +")");
+        } catch (Exception e) {
+            LOGGER.debug(e);
+            LOGGER.error(e.getMessage());
+        }
+        return 0;
+	}
+	
+	/*public List<Orders> readcustomer() {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+	             Statement statement = connection.createStatement();
+	             ResultSet resultSet = statement.executeQuery("select sum(quantity*value) as total from orders, orderItems, items where order.orderid = orderItems.orderid and orderItems.itemid and orders.orderid = orderid =" +orderid +")");
+
+	        )
+	       {
+	            List<Orders> customerorders = new ArrayList<>();
+	            while (resultSet.next()) {
+	                customerorders.add(modelOne(resultSet));
+	            }
+	            return customerorders;
+	        } catch (SQLException e) {
+	            LOGGER.debug(e);
+	            LOGGER.error(e.getMessage());
+	        }
+	        return new ArrayList<>();
+	}*/
+	
+	
+	
 }

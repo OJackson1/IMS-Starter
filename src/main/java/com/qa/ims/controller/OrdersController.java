@@ -29,11 +29,30 @@ public class OrdersController implements CrudController<Orders>  {
      */
     @Override
     public List<Orders> readAll() {
-        List<Orders> orders = orderDAO.readAll();
+        /*List<Orders> orders = orderDAO.readAll();
         for (Orders order : orders) {
             LOGGER.info(order.toString());
         }
-        return orders;
+        return orders;*/
+    	LOGGER.info("Type \"customer\" to see customer order total or \"all\" to see all orders");
+    	String choice =utils.getString();
+    	
+    	switch(choice){
+        case "customer":
+            LOGGER.info("Type the order ID of the total you would like to see");
+			Long orderid = utils.getLong();
+			//return orderDAO.readcustomer(orderid);
+        case "all":
+        	List<Orders> orders = orderDAO.readAll();
+            for (Orders order : orders) {
+                LOGGER.info(order.toString());
+            }
+            return orders;
+        default:
+            LOGGER.info("Try again");
+            break; }
+		return null;
+    	
     }
 
     /**
@@ -53,14 +72,14 @@ public class OrdersController implements CrudController<Orders>  {
      */
     @Override
     public Orders update() {
-    	LOGGER.info("Please enter the order ID of the order you would like to update/add");
-        Long id = utils.getLong();
+    	LOGGER.info("Please enter the order ID of the order you would like to update or add");
+        Long idd = utils.getLong();
         LOGGER.info("Please enter a item ID");
         Long itemid = utils.getLong();
         LOGGER.info("Please enter a quantity");
         Long quantity = utils.getLong();
 
-        return orderDAO.update(new Orders(id,itemid,quantity));
+        return orderDAO.update(new Orders(idd,itemid,quantity));
     }
 
     /**
