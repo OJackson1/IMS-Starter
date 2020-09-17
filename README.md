@@ -10,14 +10,13 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 Java 7 or later
-
 IDE - Eclipse
 Build tool - Maven
-Database managaement System - MySQL
+Database Managaement System - MySQL
 
 ### Installing
 
-1) Clone this repository and open it in your IDE.
+1) Clone this Git repository and open it as Maven build in your IDE.
 
 2) Either change the 'connect()' method to your own database connection inside the src/main/java/com/qa/ims/utils/DBUtils.java file OR change the database properties method and modify src/main/java/com/qa/ims/IMS.java to pass the file location of 'properties.db' to connect().
 
@@ -27,12 +26,9 @@ Database managaement System - MySQL
 
 The tests are located under src/test.
 
-### Unit Tests 
-
-The Junit tests cover some basic testing such as checking classes like Orders or Item have correct equals() and 
-hashCode() methods.
+The Junit tests cover some testing such as checking the Order and Item classes have correct equals() methods.
   
-The tests for the Data-Access Objects (DAOs) are a bit more complex, passing in objects, ensuring they are 
+The tests for the Data-Access Objects files are a more complex ensuring objects are 
 processed correctly and that the correct information is passed back. Example:
 
 @Test
@@ -40,12 +36,12 @@ processed correctly and that the correct information is passed back. Example:
 		final Customer created = new Customer(6L, "Leeand", "Perrins");
 		assertEquals(created, DAO.create(created));  
   
-Using an IDE you can run these tests by right-clicking the classes and selecting the "Run as JUnit test" 
-option or right-click on the IMS folder and click "Run as JUnit test" to run whole application test.
+Using an IDE you can run these tests by right-clicking the classes and selecting "Run as JUnit test" or right-click
+on the IMS folder and click "Run as JUnit test" to run whole application test.
 
-To run these tests in your IDE by right-clicking the classes and selecting "Run as JUnit test".  
+To run these tests in your IDE, right-click the classes and select "Run as JUnit test".  
   
-If you are using eclipse, you can also right-click the project folder and select 'Coverage As...'.
+If you are using eclipse, you can right-click the project folder and select 'Coverage As...'.
 
 
 ## Built With
@@ -72,6 +68,6 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Thanks to Nick and Shafeeq for all the help
+
+

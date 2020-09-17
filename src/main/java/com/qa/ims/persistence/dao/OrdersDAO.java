@@ -1,4 +1,4 @@
-package com.qa.ims.persistence.dao;
+ package com.qa.ims.persistence.dao;
 
 import java.sql.SQLException;
 
@@ -54,7 +54,6 @@ public class OrdersDAO implements Dao<Orders>{
 	             Statement statement = connection.createStatement();
 	             ResultSet resultSet = statement.executeQuery("select orders.orderid, orderItems.itemid, concat(customers.firstName,\" \", customers.surname) as customer, items.itemName, items.value, quantity,quantity*value as total from orders, orderItems, items, customers where orders.orderid = " +
 	                     "orderItems.orderid and items.itemid = orderItems.itemid and orders.customerid= customers.customerid order by orders.orderid;");
-				//ResultSet resultSet = statement.executeQuery("select orderid, customerid, itemid, total from orders, orderitems where orders.orderid = orderitems.orderid;");
 	        )
 	       {
 	            List<Orders> orders = new ArrayList<>();
@@ -83,19 +82,6 @@ public class OrdersDAO implements Dao<Orders>{
 		}
 		return null;
 	}
-	
-	/*public Orders readCustomer() {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY orderid DESC LIMIT 1");) {
-			resultSet.next();
-			return modelFromResultSet(resultSet);
-		} catch (Exception e) {
-			LOGGER.debug(e);
-			LOGGER.error(e.getMessage());
-		}
-		return null;
-	}*/
 
 	/**
 	 * Creates an order in the database
@@ -123,17 +109,7 @@ public class OrdersDAO implements Dao<Orders>{
 	        return null;
 	}
 
-	/*public Orders readItem(Long orderid) {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders where orderid = " + orderid);) {
-			resultSet.next();
-			return modelFromResultSet(resultSet);
-		} catch (Exception e) {
-			LOGGER.debug(e);
-			LOGGER.error(e.getMessage());
-		}
-		return null;*/
+	
 	public Orders addItem(Orders order) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();) {
@@ -169,30 +145,7 @@ public class OrdersDAO implements Dao<Orders>{
 	}
 
 	
-	/*// removes an item from an order
-	public Orders updateRemoveFromOrder(Orders order) {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("DELETE FROM orders WHERE orderid =" + order.getOrderid() + " AND itemid=" + order.getItemid());
-			return readItem(order.getOrderid());
-		} catch (Exception e) {
-			LOGGER.debug(e);
-			LOGGER.error(e.getMessage());
-		}
-		return null;
-	}*/
 	
-	/*//adds an item to an order
-	public Orders addToOrder(Orders order) {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("insert into orders (orderid, itemid, quantity) values (" + order.getOrderid() + ", " + order.getItemid() + ", " + order.getQuantity() + ")");
-			return readItem(order.getOrderid());
-		} catch (Exception e) {
-			LOGGER.debug(e);
-			LOGGER.error(e.getMessage());
-		}
-		return null;*/
 	public Orders readOrder(Long orderid) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();
@@ -220,7 +173,7 @@ public class OrdersDAO implements Dao<Orders>{
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
 		}
-		return 0;
+		return 0; 
 	}
 	
 	public int delete(long orderid, long itemid) {
@@ -245,26 +198,6 @@ public class OrdersDAO implements Dao<Orders>{
         }
         return 0;
 	}
-	
-	/*public List<Orders> readcustomer() {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-	             Statement statement = connection.createStatement();
-	             ResultSet resultSet = statement.executeQuery("select sum(quantity*value) as total from orders, orderItems, items where order.orderid = orderItems.orderid and orderItems.itemid and orders.orderid = orderid =" +orderid +")");
-
-	        )
-	       {
-	            List<Orders> customerorders = new ArrayList<>();
-	            while (resultSet.next()) {
-	                customerorders.add(modelOne(resultSet));
-	            }
-	            return customerorders;
-	        } catch (SQLException e) {
-	            LOGGER.debug(e);
-	            LOGGER.error(e.getMessage());
-	        }
-	        return new ArrayList<>();
-	}*/
-	
 	
 	
 }
