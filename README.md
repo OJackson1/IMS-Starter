@@ -1,4 +1,4 @@
-Coverage: 62.8%
+Coverage: 34%
 # Project Title
 
 Inventory-Management-System is a Java program using MySQL.
