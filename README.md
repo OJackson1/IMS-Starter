@@ -9,10 +9,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Java 7 or later
-IDE - Eclipse
-Build tool - Maven
-Database Managaement System - MySQL
+Version Control System: Git 
+Source Code Management: GitHub 
+Project Management: Jira 
+Database Management System: MySQL Server 5.7 
+Back-End Programming Language: Java 
+Build Tool: Maven Unit Testing: JUnit
 
 ### Installing
 
