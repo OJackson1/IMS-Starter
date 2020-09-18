@@ -3,6 +3,10 @@ Coverage: 62.8%
 
 Inventory-Management-System is a Java program using MySQL.
 
+### Presentation
+
+Owen Jackson Presentation [Presentations](https://qalearning.sharepoint.com/:p:/r/sites/20AugSDET2-Comms-TeamAir/_layouts/15/Doc.aspx?sourcedoc=%7B5B3A8409-469D-4245-BD63-C8C7535D28B6%7D&file=IMS%20project.pptx&action=edit&mobileredirect=true)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
